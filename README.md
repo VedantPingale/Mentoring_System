@@ -21,7 +21,12 @@ This system facilitates seamless interaction between students and mentors by all
 
 ## Setup Instructions
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd mentoring-system
+### Quick Start
+
+1. Click on **Code** (green button) and select **Download ZIP**
+2. Extract the downloaded ZIP file to your desired location
+3. Open the extracted folder (the one containing `manage.py`)
+4. Right-click inside the folder and select **Open Terminal** or **Open Command Prompt**
+5. Run the following command:
+     python manage.py runserver
+6. Open your browser and go to http://127.0.0.1:8000/ to access the website
