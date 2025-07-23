@@ -29,6 +29,5 @@ This system facilitates seamless interaction between students and mentors by all
 4. Right-click inside the folder and select **Open Terminal** or **Open Command Prompt**
 5. Run the following command:
    ```bash
-   python manage.py runserver5. Run the following command:
-     python manage.py runserver
+   python manage.py runserver
 6. Open your browser and go to http://127.0.0.1:8000/ to access the website
