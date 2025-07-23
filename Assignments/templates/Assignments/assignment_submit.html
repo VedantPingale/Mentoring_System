@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Submit Assignment</h2>
+<p><strong>{{ assignment.title }}</strong> - Due: {{ assignment.due_date }}</p>
+<p>{{ assignment.description }}</p>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Upload</button>
+</form>
+<a href="{% url 'assignment_list' %}">Back to Assignments</a>
+{% endblock %}

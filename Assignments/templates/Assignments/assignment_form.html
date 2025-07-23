@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-center mb-4">Create Assignment</h2>
+<form method="post" enctype="multipart/form-data" class="mb-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.as_p }}
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>
+<div class="text-center">
+    <a href="{% url 'assignment_list' %}" class="btn btn-secondary">Back to Assignments</a>
+</div>
+{% endblock %}
