@@ -21,6 +21,18 @@ This system facilitates seamless interaction between students and mentors by all
 
 ## Setup Instructions
 
+### Prerequisites
+
+Before setting up the project, make sure you have the following installed on your system:
+
+- **Python** (version 3.6 or above)  
+  [Download Python](https://www.python.org/downloads/)
+
+- **pip** (Python package installer)  
+  Usually comes bundled with Python. To check if it's installed:
+  ```bash
+  pip --version
+  
 ### Quick Start
 
 1. Click on **Code** (green button) and select **Download ZIP**
