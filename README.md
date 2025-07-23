@@ -46,10 +46,9 @@ Before setting up the project, make sure you have the following installed on you
 
 ## The Default Login for Admin is 
 ### Username
-    ```bash
     Admin
-
 ### Password
+    Admin@123
 ### Make Sure to change the admin password or add a new admin login using the admin panel or 
   ```bash
   python manage.py createsuperuser
