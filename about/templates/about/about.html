@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoring System - About</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            text-align: center;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #333;
+            padding: 15px;
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 15px 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: color 0.3s ease, transform 0.2s ease, background 0.3s ease;
+            border-radius: 8px;
+        }
+
+        nav a:hover {
+            color: #333;
+            background: #74ebd5;
+            transform: scale(1.1);
+        }
+
+        .container {
+            margin: 60px auto;
+            max-width: 800px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>About</header>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        {% if user.is_authenticated %}
+            <!-- Show Profile and My Certifications for non-admin users -->
+            {% if not user.is_staff %}
+                <a href="{% url 'student_profile' %}">Profile</a>
+                <a href="{% url 'user_certification_list' %}">My Certifications</a>
+            {% endif %}
+            <!-- Show Student Database for admin users -->
+            {% if user.is_staff %}
+                <a href="{% url 'student_database' %}">Student Database</a>
+            {% endif %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+
+    <div class="container">
+        <h1>About Our Mentoring System</h1>
+        <p>Our platform is designed to connect students with experienced mentors to guide them in academics and career growth. We aim to foster learning, networking, and personal development.</p>
+        <p>Whether you're a student looking for guidance or a mentor willing to share your expertise, our platform provides the perfect space to connect and collaborate.</p>
+        <a href="{% url 'home' %}" class="btn">Go Back Home</a>
+    </div>
+
+</body>
+</html>
