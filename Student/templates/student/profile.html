@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<style>
+    .profile-form {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+    
+    .form-section {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-title {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.25rem;
+    }
+    
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .form-group {
+        margin-bottom: 0.75rem;
+    }
+    
+    .form-label {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+        color: #2c3e50;
+        font-weight: 500;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        outline: none;
+    }
+    
+    .submit-btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .submit-btn:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="profile-form">
+    <h3 class="text-center mb-4" style="color: #2c3e50;">Student Profile</h3>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Personal Information -->
+        <div class="form-section">
+            <h4 class="section-title">Personal Information</h4>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    {{ form.Name|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    {{ form.Email|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Roll No</label>
+                    {{ form.Roll_No|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Birth Date</label>
+                    {{ form.Birth_Date|add_class:"form-control"|attr:"type:date" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contact No</label>
+                    {{ form.Contact_No|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Admission No</label>
+                    {{ form.Admission_No|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Department</label>
+                    {{ form.Department|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Academic Year</label>
+                    {{ form.Academic_Year|add_class:"form-control" }}
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1">
+                    <label class="form-label">Address</label>
+                    {{ form.address|add_class:"form-control" }}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Parent Information -->
+        <div class="form-section">
+            <h4 class="section-title">Parent Information</h4>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Father's Name</label>
+                    {{ form.father_name|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Father's Occupation</label>
+                    {{ form.father_occupation|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Father's Contact</label>
+                    {{ form.father_contact|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Father's Email</label>
+                    {{ form.father_email|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mother's Name</label>
+                    {{ form.mother_name|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mother's Occupation</label>
+                    {{ form.mother_occupation|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mother's Contact</label>
+                    {{ form.mother_contact|add_class:"form-control" }}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional Information -->
+        <div class="form-section">
+            <h4 class="section-title">Additional Information</h4>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Hobbies</label>
+                    {{ form.hobbies|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Health Issues</label>
+                    {{ form.health_issues|add_class:"form-control" }}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Academic History -->
+        <div class="form-section">
+            <h4 class="section-title">Academic History</h4>
+            
+            <div class="form-section" style="background: #f8f9fa; padding: 1rem; margin-bottom: 1rem;">
+                <h5 class="mb-3" style="color: #2c3e50; font-size: 1rem;">SSC Information</h5>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">SSC Marks</label>
+                        {{ form.SSC_marks|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">SSC Year</label>
+                        {{ form.SSC_year_of_passing|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">SSC Board</label>
+                        {{ form.SSC_board|add_class:"form-control" }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section" style="background: #f8f9fa; padding: 1rem;">
+                <h5 class="mb-3" style="color: #2c3e50; font-size: 1rem;">HSC Information</h5>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">HSC Marks</label>
+                        {{ form.HSC_marks|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">HSC Year</label>
+                        {{ form.HSC_year_of_passing|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">HSC Board</label>
+                        {{ form.HSC_board|add_class:"form-control" }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Semester Marks -->
+        <div class="form-section">
+            <h4 class="section-title">Semester Marks</h4>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Semester 1</label>
+                    {{ form.sem1_marks|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Semester 2</label>
+                    {{ form.sem2_marks|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Semester 3</label>
+                    {{ form.sem3_marks|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Semester 4</label>
+                    {{ form.sem4_marks|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Semester 5</label>
+                    {{ form.sem5_marks|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Semester 6</label>
+                    {{ form.sem6_marks|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Semester 7</label>
+                    {{ form.sem7_marks|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Semester 8</label>
+                    {{ form.sem8_marks|add_class:"form-control" }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-save"></i> Save Profile
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

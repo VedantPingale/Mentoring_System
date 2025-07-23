@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="student-list-container">
+    <div class="student-list-header">
+        <h2><i class="fas fa-users"></i> Student Directory</h2>
+        <p>Browse and manage all registered students in the system</p>
+    </div>
+
+    {% if students %}
+    <div class="table-responsive">
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-id-card"></i> Admission No</th>
+                    <th><i class="fas fa-user"></i> Student Name</th>
+                    <th><i class="fas fa-graduation-cap"></i> Department</th>
+                    <th><i class="fas fa-calendar-alt"></i> Academic Year</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr class="{% cycle 'even-row' 'odd-row' %}">
+                    <td>{{ student.Admission_No }}</td>
+                    <td>{{ student.Name }}</td>
+                    <td>{{ student.Department }}</td>
+                    <td>{{ student.Academic_Year }}</td>
+                    <td>
+                        <a href="{% url 'user_detail' student.user.id %}" class="profile-btn">
+                            <i class="fas fa-eye"></i> View Profile
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="no-students">
+        <i class="fas fa-user-slash"></i>
+        <p>No students found in the system</p>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+    /* Color Variables */
+    :root {
+        --primary: #4361ee;
+        --primary-light: #4cc9f0;
+        --secondary: #3a0ca3;
+        --accent: #f72585;
+        --light: #f8f9fa;
+        --dark: #212529;
+    }
+
+    /* Container Styles */
+    .student-list-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    /* Header Styles */
+    .student-list-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border-radius: 10px;
+        background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+    }
+
+    .student-list-header h2 {
+        color: var(--secondary);
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .student-list-header p {
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    /* Table Styles */
+    .table-responsive {
+        overflow-x: auto;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .student-table th,
+    .student-table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .student-table th {
+        background-color: var(--primary);
+        color: white;
+        padding: 15px;
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+    }
+
+    .student-table th i {
+        margin-right: 8px;
+    }
+
+    .student-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .student-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Row Styles */
+    .even-row {
+        background-color: white;
+    }
+
+    .odd-row {
+        background-color: #f9f9f9;
+    }
+
+    .student-table tr:hover {
+        background-color: rgba(67, 97, 238, 0.05);
+    }
+
+    /* Button Styles */
+    .profile-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 15px;
+        background-color: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        margin: 0 auto;
+    }
+
+    .profile-btn:hover {
+        background-color: var(--secondary);
+        transform: translateY(-2px);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    /* No Students Styles */
+    .no-students {
+        text-align: center;
+        padding: 3rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .no-students i {
+        font-size: 3rem;
+        color: #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .no-students p {
+        color: #666;
+        font-size: 1.2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .student-table {
+            font-size: 0.9rem;
+        }
+        
+        .student-table th, 
+        .student-table td {
+            padding: 10px 8px;
+        }
+        
+        .profile-btn {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+        }
+    }
+</style>
+{% endblock %}

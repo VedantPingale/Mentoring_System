@@ -1,0 +1,332 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ student.user.username }}'s Profile{% endblock %}
+
+{% block content %}
+
+    <!-- Profile Header -->
+    <div class="profile-header text-center mb-5">
+        <h2 class="display-4 mb-3">{{ student.Name }}'s Profile</h2>
+        <div class="d-flex justify-content-center gap-3">
+            <span class="badge bg-primary">{{ student.Department }}</span>
+            <span class="badge bg-secondary">{{ student.Academic_Year }}</span>
+            <span class="badge bg-info text-dark">Admission No: {{ student.Admission_No }}</span>
+        </div>
+    </div>
+
+    <!-- Main Profile Grid -->
+    <div class="row g-4">
+        <!-- Student Basic Info -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-user-graduate me-2"></i>Student Details</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6 class="text-muted">Full Name</h6>
+                            <p>{{ student.Name }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6 class="text-muted">Roll Number</h6>
+                            <p>{{ student.Roll_No }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6 class="text-muted">Email</h6>
+                            <p>{{ student.Email }}</a></p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6 class="text-muted">Contact</h6>
+                            <p>{{ student.Contact_No }}</a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6 class="text-muted">Birth Date</h6>
+                            <p>{{ student.Birth_Date }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6 class="text-muted">Blood Group</h6>
+                            <p>{{ student.blood_group }}</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="text-muted">Address</h6>
+                        <p>{{ student.address }}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6 class="text-muted">Hobbies</h6>
+                            <p>{{ student.hobbies }}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6 class="text-muted">Health Issues</h6>
+                            <p>{{ student.health_issues }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Parent Information -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="fas fa-users me-2"></i>Parent Information</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h5 class="text-primary"><i class="fas fa-male me-2"></i>Father</h5>
+                            <h6 class="text-muted">Name</h6>
+                            <p>{{ student.father_name }}</p>
+                            <h6 class="text-muted">Occupation</h6>
+                            <p>{{ student.father_occupation }}</p>
+                            <h6 class="text-muted">Contact</h6>
+                            <p>{{ student.father_contact }}</a></p>
+                            <h6 class="text-muted">Email</h6>
+                            <p>{{ student.father_email }}</a></p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5 class="text-primary"><i class="fas fa-female me-2"></i>Mother</h5>
+                            <h6 class="text-muted">Name</h6>
+                            <p>{{ student.mother_name }}</p>
+                            <h6 class="text-muted">Occupation</h6>
+                            <p>{{ student.mother_occupation }}</p>
+                            <h6 class="text-muted">Contact</h6>
+                            <p>{{ student.mother_contact }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academic History -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-info text-dark">
+                    <h4 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Academic History</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h5 class="text-primary">Secondary (SSC)</h5>
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <h6 class="text-muted">Marks</h6>
+                                <p>{{ student.SSC_marks }}</p>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <h6 class="text-muted">Year</h6>
+                                <p>{{ student.SSC_year_of_passing }}</p>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <h6 class="text-muted">Board</h6>
+                                <p>{{ student.SSC_board }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-primary">Higher Secondary (HSC/Diploma)</h5>
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <h6 class="text-muted">Marks</h6>
+                                <p>{{ student.HSC_marks }}</p>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <h6 class="text-muted">Year</h6>
+                                <p>{{ student.HSC_year_of_passing }}</p>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <h6 class="text-muted">Board</h6>
+                                <p>{{ student.HSC_board }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Semester Marks -->
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0"><i class="fas fa-chart-line me-2"></i>Semester Performance</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Semester</th>
+                                    <th>Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Semester 1</td>
+                                    <td>{{ student.sem1_marks }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Semester 2</td>
+                                    <td>{{ student.sem2_marks }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Semester 3</td>
+                                    <td>{{ student.sem3_marks }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Semester 4</td>
+                                    <td>{{ student.sem4_marks }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Semester 5</td>
+                                    <td>{{ student.sem5_marks }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Semester 6</td>
+                                    <td>{{ student.sem6_marks }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Semester 7</td>
+                                    <td>{{ student.sem7_marks }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Semester 8</td>
+                                    <td>{{ student.sem8_marks }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certifications Section -->
+<div class="mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3><i class="fas fa-certificate me-2"></i>Uploaded Certifications</h3>
+        <span class="badge bg-primary">{{ certifications|length }} certificates</span>
+    </div>
+
+    {% if certifications %}
+    <div class="row g-4">
+        {% for cert in certifications %}
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="cert-preview" style="height: 180px; overflow: hidden; cursor: pointer;"
+                     data-bs-toggle="modal" data-bs-target="#certModal{{ cert.id }}">
+                    {% if cert.file.url|lower|slice:'-4:' == '.pdf' %}
+                        <!-- PDF Preview -->
+                        <div class="bg-light h-100 d-flex flex-column justify-content-center align-items-center p-3">
+                            <i class="fas fa-file-pdf text-danger mb-2" style="font-size: 3rem;"></i>
+                            <h6 class="text-center text-dark">{{ cert.title }}</h6>
+                            <small class="text-muted">PDF Document</small>
+                        </div>
+                    {% else %}
+                        <!-- Image Preview -->
+                        <img src="{{ cert.file.url }}" class="img-fluid h-100 w-100" 
+                             alt="Certification Image"
+                             style="object-fit: cover;">
+                    {% endif %}
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-primary">{{ cert.title }}</h5>
+                    <div class="mb-2">
+                        <span class="badge bg-light text-dark">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            {{ cert.uploaded_at|date:"d M Y" }}
+                        </span>
+                    </div>
+                    <p class="card-text">{{ cert.description|truncatechars:120 }}</p>
+                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="{{ cert.file.url }}" target="_blank" 
+                               class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-eye me-1"></i> View
+                            </a>
+                            <a href="{{ cert.file.url }}" download
+                               class="btn btn-sm btn-outline-success">
+                                <i class="fas fa-download me-1"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for enlarged view -->
+        <div class="modal fade" id="certModal{{ cert.id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ cert.title }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        {% if cert.file.url|lower|slice:'-4:' == '.pdf' %}
+                            <!-- PDF Viewer -->
+                            <div class="ratio ratio-16x9">
+                                <embed src="{{ cert.file.url }}#toolbar=0&navpanes=0&scrollbar=0" 
+                                       type="application/pdf" 
+                                       style="width: 100%; height: 500px;">
+                            </div>
+                        {% else %}
+                            <!-- Image Viewer -->
+                            <img src="{{ cert.file.url }}" class="img-fluid" alt="Certification Image">
+                        {% endif %}
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ cert.file.url }}" download
+                           class="btn btn-success">
+                            <i class="fas fa-download me-1"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5 bg-light rounded">
+        <i class="fas fa-folder-open fa-3x text-muted mb-3"></i>
+        <h4 class="text-muted">No certifications uploaded</h4>
+        <p class="text-muted">This student hasn't uploaded any certifications yet.</p>
+    </div>
+    {% endif %}
+</div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-5 mb-4">
+        <a href="{% url 'user_list' %}" class="btn btn-secondary px-4">
+            <i class="fas fa-arrow-left me-2"></i>Back to Student List
+        </a>
+    </div>
+
+
+<style>
+    .card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: none;
+        border-radius: 10px;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .card-header {
+        border-radius: 10px 10px 0 0 !important;
+    }
+    h6.text-muted {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+    .badge {
+        font-weight: 500;
+        padding: 0.35em 0.65em;
+    }
+</style>
+{% endblock %}
