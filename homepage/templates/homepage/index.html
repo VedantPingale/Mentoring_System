@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+
+{% block title %}Mentoring System - Home{% endblock %}
+
+{% block content %}
+<div class="welcome-container">
+    <div class="welcome-content">
+        <h1 class="welcome-title">Welcome to the Mentoring System</h1>
+        <p class="welcome-text">Connecting students with experienced mentors to achieve academic and professional success.</p>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+    {% if user.is_staff %}
+    <!-- Admin Dashboard -->
+    <div class="dashboard-container admin-dashboard">
+        <h2 class="dashboard-title"><i class="fas fa-shield-alt"></i> Administrator Dashboard</h2>
+        <div class="dashboard-grid">
+            
+            <div class="dashboard-card card-students">
+                <a href="{% url 'user_list' %}" class="card-link">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Student Database</h3>
+                    <p>Manage all student profiles and academic records.</p>
+                    <div class="card-arrow"><i class="fas fa-chevron-right"></i></div>
+                </a>
+            </div>
+            
+            <div class="dashboard-card card-settings">
+                <a href="/admin/" class="card-link">
+                    <div class="card-icon"><i class="fas fa-cog"></i></div>
+                    <h3>System Administration</h3>
+                    <p>Access advanced system configuration and settings.</p>
+                    <div class="card-arrow"><i class="fas fa-chevron-right"></i></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <!-- Student Dashboard -->
+    <div class="dashboard-container student-dashboard">
+        <h2 class="dashboard-title"><i class="fas fa-user-graduate"></i> Student Dashboard</h2>
+        <div class="dashboard-grid">
+            <div class="dashboard-card card-certifications">
+                <a href="{% url 'user_certification_list' %}" class="card-link">
+                    <div class="card-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>My Certifications</h3>
+                    <p>View and manage your uploaded certifications.</p>
+                    <div class="card-arrow"><i class="fas fa-chevron-right"></i></div>
+                </a>
+            </div>
+            
+            <div class="dashboard-card card-profile">
+                <a href="{% url 'student_profile' %}" class="card-link">
+                    <div class="card-icon"><i class="fas fa-user"></i></div>
+                    <h3>My Profile</h3>
+                    <p>Update your personal and academic information.</p>
+                    <div class="card-arrow"><i class="fas fa-chevron-right"></i></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+<!-- Not logged in view -->
+<div class="login-container">
+    <div class="login-content">
+        <i class="fas fa-sign-in-alt login-icon"></i>
+        <div class="login-text">
+            <h3>Ready to get started?</h3>
+            <p>Please <a href="{% url 'login' %}" class="login-link">log in</a> to access your dashboard.</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<style>
+
+    /* Color Variables */
+    :root {
+        --primary: #4361ee;
+        --primary-light: #4cc9f0;
+        --secondary: #3a0ca3;
+        --accent: #f72585;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --success: #4bb543;
+        --warning: #f8961e;
+        --danger: #f94144;
+    }
+
+    /* Welcome Section */
+    .welcome-container {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 3rem 1rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .welcome-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .welcome-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .welcome-text {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    /* Dashboard Containers */
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .dashboard-title {
+        color: var(--secondary);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.8rem;
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.05);
+        position: relative;
+    }
+
+    .dashboard-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    }
+
+    .card-link {
+        display: block;
+        padding: 2rem;
+        text-decoration: none;
+        color: var(--dark);
+        height: 100%;
+    }
+
+    .card-icon {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+    }
+
+    .dashboard-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+    }
+
+    .dashboard-card p {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .card-arrow {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        color: var(--primary);
+        transition: transform 0.3s ease;
+    }
+
+    .dashboard-card:hover .card-arrow {
+        transform: translateX(5px);
+    }
+
+    /* Card Color Variants */
+    .card-certifications {
+        border-top: 4px solid var(--success);
+    }
+
+    .card-students {
+        border-top: 4px solid var(--primary);
+    }
+
+    .card-settings {
+        border-top: 4px solid var(--warning);
+    }
+
+    .card-profile {
+        border-top: 4px solid var(--accent);
+    }
+
+    /* Login Container */
+    .login-container {
+        max-width: 600px;
+        margin: 3rem auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .login-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .login-icon {
+        font-size: 3rem;
+        color: var(--primary);
+    }
+
+    .login-text h3 {
+        color: var(--secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    .login-link {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .login-link:hover {
+        color: var(--secondary);
+        text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .welcome-title {
+            font-size: 2rem;
+        }
+        
+        .welcome-text {
+            font-size: 1rem;
+        }
+        
+        .dashboard-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .dashboard-card {
+            padding: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
