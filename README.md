@@ -43,3 +43,13 @@ Before setting up the project, make sure you have the following installed on you
    ```bash
    python manage.py runserver
 6. Open your browser and go to http://127.0.0.1:8000/ to access the website
+
+## The Default Login for Admin is 
+### Username
+    ```bash
+    Admin
+
+### Password
+### Make Sure to change the admin password or add a new admin login using the admin panel or 
+  ```bash
+  python manage.py createsuperuser
