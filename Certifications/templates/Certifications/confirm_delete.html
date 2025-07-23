@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<h2>Confirm Delete</h2>
+
+<p>Are you sure you want to delete the certification: <strong>{{ certification.title }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    {% if user.is_staff %}
+        <a href="{% url 'admin_certification_list' %}" class="btn btn-secondary">Cancel</a>
+    {% else %}
+        <a href="{% url 'user_certification_list' %}" class="btn btn-secondary">Cancel</a>
+    {% endif %}
+</form>
+
+{% endblock %}

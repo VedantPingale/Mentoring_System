@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Certification{% endblock %}
+
+{% block content %}
+<h2>Upload Certification</h2>
+
+<form method="post" enctype="multipart/form-data" class="mt-4">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="id_title" class="form-label">Certification Title</label>
+        {{ form.title }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_description" class="form-label">Description</label>
+        {{ form.description }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_file" class="form-label">Upload File</label>
+        {{ form.file }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Upload</button>
+    <a href="{% url 'user_certification_list' %}" class="btn btn-secondary">Back to My Certifications</a>
+</form>
+
+{% endblock %}
