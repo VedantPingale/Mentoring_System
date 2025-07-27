@@ -33,9 +33,12 @@ Before setting up the project, make sure you have the following installed on you
   Usually comes bundled with Python. To check if it's installed:
   ```bash
   pip --version
+  
+- **pip modules** (Required Modules)
+  ```bash
   pip install django
   pip install django_widget_tweaks
-  pip install pillow
+  pip install pillow 
 
   
 ### Quick Start
